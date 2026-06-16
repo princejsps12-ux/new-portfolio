@@ -1,11 +1,11 @@
 "use client";
 
-import { contact, site } from "@/lib/data";
+import { contact, site, gmailComposeUrl } from "@/lib/data";
 import { SectionLabel } from "./SectionLabel";
 import { Reveal } from "./Reveal";
 
 const links = [
-  { label: "Email", value: contact.email, href: `mailto:${contact.email}` },
+  { label: "Email", value: contact.email, href: gmailComposeUrl },
   { label: "GitHub", value: contact.github.label, href: contact.github.href },
   { label: "LinkedIn", value: contact.linkedin.label, href: contact.linkedin.href },
   { label: "LeetCode", value: contact.leetcode.label, href: contact.leetcode.href },
@@ -32,7 +32,9 @@ export function Contact() {
                 reply within a day.
               </p>
               <a
-                href={`mailto:${contact.email}`}
+                href={gmailComposeUrl}
+                target="_blank"
+                rel="noreferrer"
                 className="mt-6 inline-flex items-center gap-2 rounded-md bg-accent px-5 py-2.5 font-mono text-sm font-medium text-bg transition-transform hover:-translate-y-0.5"
               >
                 {contact.email}

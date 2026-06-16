@@ -29,6 +29,13 @@ export const contact = {
   },
 } as const;
 
+// Opens Gmail's web compose, pre-addressed to me, in a new tab. More reliable
+// than `mailto:` — which depends on the visitor having a default mail client
+// configured (and can silently fail or open the wrong app otherwise).
+export const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+  contact.email
+)}&su=${encodeURIComponent("Hello Prince — reaching out from your portfolio")}`;
+
 export type Metric = {
   value: number;
   decimals: number;

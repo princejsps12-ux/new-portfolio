@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { site, contact } from "@/lib/data";
+import { site, contact, gmailComposeUrl } from "@/lib/data";
 import { StatusBar } from "./StatusBar";
 import { Typewriter } from "./Typewriter";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
@@ -61,7 +61,9 @@ export function Hero() {
             View work
           </a>
           <a
-            href={`mailto:${contact.email}`}
+            href={gmailComposeUrl}
+            target="_blank"
+            rel="noreferrer"
             className="rounded-md border border-border bg-surface px-5 py-2.5 font-mono text-sm transition-colors hover:border-accent/50"
           >
             Get in touch
