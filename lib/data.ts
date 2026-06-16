@@ -51,7 +51,12 @@ export const metrics: Metric[] = [
   { value: 27, decimals: 0, prefix: "'", label: "Expected graduation" },
 ];
 
-export type ProjectKind = "devping" | "intervai" | "taskflow" | "tailortalk";
+export type ProjectKind =
+  | "devping"
+  | "intervai"
+  | "taskflow"
+  | "tailortalk"
+  | "gst";
 
 export type Project = {
   id: ProjectKind;
@@ -158,6 +163,20 @@ export const projects: Project[] = [
       "Agent workflow with conversation memory for contextual follow-ups.",
       "Custom DriveSearchTool with typo correction and secure Drive access via service account.",
       "FastAPI backend with session management + rate limiting, Streamlit chat frontend.",
+    ],
+  },
+  {
+    id: "gst",
+    index: "05",
+    name: "GST Calculator",
+    tagline: "Ad-Free GST Calculator for Freelancers",
+    stack: ["HTML", "CSS", "JavaScript", "Vercel"],
+    live: "https://gst-calculator-sigma.vercel.app",
+    code: "https://github.com/princejsps12-ux/gst-calculator",
+    highlights: [
+      "Add or remove GST from any amount with instant, accurate calculations.",
+      "Clean, ad-free interface — purpose-built for invoicing small freelance projects.",
+      "Zero dependencies: a single self-contained HTML/CSS/JavaScript page, deployed on Vercel.",
     ],
   },
 ];

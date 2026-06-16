@@ -8,6 +8,7 @@ import { DevPingCard } from "./cards/DevPingCard";
 import { InterVAICard } from "./cards/InterVAICard";
 import { TaskFlowCard } from "./cards/TaskFlowCard";
 import { TailorTalkCard } from "./cards/TailorTalkCard";
+import { GstCalculatorCard } from "./cards/GstCalculatorCard";
 
 function Simulation({ id }: { id: Project["id"] }) {
   switch (id) {
@@ -19,6 +20,8 @@ function Simulation({ id }: { id: Project["id"] }) {
       return <TaskFlowCard />;
     case "tailortalk":
       return <TailorTalkCard />;
+    case "gst":
+      return <GstCalculatorCard />;
   }
 }
 
