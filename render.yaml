@@ -9,7 +9,9 @@ services:
     plan: free # bump to "starter" if builds OOM on free's 512MB
     region: singapore # closest to India; also: oregon, frankfurt, ohio
     branch: main
-    buildCommand: npm ci && npm run build
+    # --include=dev forces devDependencies (tailwind, postcss, typescript)
+    # to install even though Render runs with NODE_ENV=production.
+    buildCommand: npm ci --include=dev && npm run build
     startCommand: npm run start
     autoDeploy: true
     healthCheckPath: /
@@ -19,5 +21,6 @@ services:
       # Raise the build heap so `next build` doesn't run out of memory.
       - key: NODE_OPTIONS
         value: "--max-old-space-size=2048"
-      - key: NODE_ENV
-        value: production
+      # NOTE: do NOT set NODE_ENV=production here — it makes npm skip the
+      # devDependencies that the build needs. Next.js sets production mode
+      # itself during `next build` / `next start`.
