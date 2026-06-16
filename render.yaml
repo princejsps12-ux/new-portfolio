@@ -1,0 +1,23 @@
+# Render Blueprint — Infrastructure as Code.
+# Commit this file and Render can provision the service automatically
+# (New + → "Blueprint"). Or ignore it and configure the service in the
+# dashboard using the same values (see the deploy guide).
+services:
+  - type: web
+    name: prince-pandey-portfolio
+    runtime: node
+    plan: free # bump to "starter" if builds OOM on free's 512MB
+    region: singapore # closest to India; also: oregon, frankfurt, ohio
+    branch: main
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    autoDeploy: true
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: "20.18.0"
+      # Raise the build heap so `next build` doesn't run out of memory.
+      - key: NODE_OPTIONS
+        value: "--max-old-space-size=2048"
+      - key: NODE_ENV
+        value: production
